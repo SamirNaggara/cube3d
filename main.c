@@ -20,35 +20,33 @@ int	main(int ac, char **av)
 	data.ac = ac;
 	data.av = av;
 	if (!ft_parsing(&data))
-		return (0);
-	if (!ft_init_mlx(&data))
-		return (0);  //free a ajouter
+		return (1);
+	data.mlx = mlx_init();
+	if (!data.mlx)
+		return (1);
 	if (!ft_load_images(&data))
-		return (0);  //free a ajouter
+		return (1);  //free a ajouter
 	if (!ft_exec(&data))
-		return (0);  //free a ajouter
-	ft_destroy_mlx(&data);
-	return (0);
-
+		return (1);  //free a ajouter
+	return (ft_exit_program(&data), 1);
 }
 
-int	ft_init_mlx(t_data *data)
+int	ft_exit_program(t_data *data)
 {
-	data->mlx = mlx_init();
-	if (!data->mlx)
-		return (0);
-	data->window = mlx_new_window(data->mlx, WINDOW_X_SIZE,
-			WINDOW_Y_SIZE, W_TITLE);
-	if (!data->window)
-		return (mlx_destroy_display(data->mlx), 0);
-	return (1);
-}
-
-int	ft_destroy_mlx(t_data *data)
-{
+	if (data->n_wall.img_ptr)
+		mlx_destroy_image(data->mlx, data->n_wall.img_ptr);
+	if (data->w_wall.img_ptr)
+		mlx_destroy_image(data->mlx, data->w_wall.img_ptr);
+	if (data->e_wall.img_ptr)
+		mlx_destroy_image(data->mlx, data->e_wall.img_ptr);
+	if (data->s_wall.img_ptr)
+		mlx_destroy_image(data->mlx, data->s_wall.img_ptr);
+	if (data->screen.img_ptr)
+		mlx_destroy_image(data->mlx, data->screen.img_ptr);
 	if (data->window)
 		mlx_destroy_window(data->mlx, data->window);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
-	return (1);
+	exit(data->exit_code);
+	return (0);
 }

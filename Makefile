@@ -17,6 +17,7 @@ RESET			= 	\033[0m
 SOURCES	=	./main.c \
 			./$(SOURCE_FOLDER)/parsing/parsing.c \
 			./$(SOURCE_FOLDER)/execution/execution.c \
+			./$(SOURCE_FOLDER)/execution/input.c \
 			./$(SOURCE_FOLDER)/execution/load_image.c \
 
 OBJETS	=	$(SOURCES:.c=.o)			
@@ -30,7 +31,7 @@ all		: lib $(NAME)
 	@$(CC) -Wall -Wextra -Werror -I/usr/include -Iminilibx -O3 -c $< -o $@
 
 $(NAME): $(OBJETS)
-	@echo "\nCréation de l'executable solong\n"
+	@echo "\nCréation de l'executable cub3D\n"
 	@$(CC) $(OBJETS) -Lminilibx -lmlx -L/usr/lib -Iminilibx -lXext -lX11 -lm -lz -o $(NAME) $(MATH_LIB) $(GNL) $(PRINTF) $(LIBFT)
 
 lib	: 
