@@ -1,4 +1,4 @@
-NAME			= 	cube3D
+NAME			= 	cub3D
 SOURCE_FOLDER	=	src
 MATH_LIB		= 	-lm
 LIB_PATH		=	libft-plus
@@ -31,7 +31,7 @@ all		: lib $(NAME)
 
 $(NAME): $(OBJETS)
 	@echo "\nCréation de l'executable solong\n"
-	@$(CC) $(OBJETS) -Lminilibx -lminilibx -L/usr/lib -Iminilibx -lXext -lX11 -lm -lz -o $(NAME) $(MATH_LIB) $(GNL) $(PRINTF) $(LIBFT)
+	@$(CC) $(OBJETS) -Lminilibx -lmlx -L/usr/lib -Iminilibx -lXext -lX11 -lm -lz -o $(NAME) $(MATH_LIB) $(GNL) $(PRINTF) $(LIBFT)
 
 lib	: 
 	@echo "Je déclenche le Makefile de Libft-plus\n"

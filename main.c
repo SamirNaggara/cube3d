@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 		return (0);
 	if (!ft_init_mlx(&data))
 		return (0);  //free a ajouter
-	if (ft_load_images(&data))
+	if (!ft_load_images(&data))
 		return (0);  //free a ajouter
 	if (!ft_exec(&data))
 		return (0);  //free a ajouter
@@ -46,7 +46,9 @@ int	ft_init_mlx(t_data *data)
 
 int	ft_destroy_mlx(t_data *data)
 {
-	mlx_destroy_window(data->mlx, data->window);
+	if (data->window)
+		mlx_destroy_window(data->mlx, data->window);
 	mlx_destroy_display(data->mlx);
+	free(data->mlx);
 	return (1);
 }
