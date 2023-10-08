@@ -87,6 +87,7 @@ int	ft_parsing(t_data *data);
 
 /* EXECUTION */
 int		ft_exec(t_data *data);
+void	ft_raycasting(t_data *data);
 int		ft_init_mlx(t_data *data);
 int		ft_exit_program(t_data *data);
 int		ft_key_press(int keycode, t_data *data);

@@ -26,8 +26,7 @@ int	main(int ac, char **av)
 		return (1);
 	if (!ft_load_images(&data))
 		return (1);  //free a ajouter
-	if (!ft_exec(&data))
-		return (1);  //free a ajouter
+	ft_exec(&data);
 	return (ft_exit_program(&data), 1);
 }
 

@@ -34,7 +34,8 @@ int	ft_init_mlx(t_data *data)
 int	ft_exec(t_data *data)
 {
 	if (ft_init_mlx(data))
-		return (data->exit_code = 1, ft_exit_program(data), 1);
+		return (data->exit_code = 1, 1);
+	ft_raycasting(data);
 	mlx_hook(data->window, 2, 1L << 0, ft_key_press, data);
 	mlx_hook(data->window, 3, 1L << 1, ft_key_release, data);
 	mlx_hook(data->window, 17, 0L, ft_exit_program, data);
