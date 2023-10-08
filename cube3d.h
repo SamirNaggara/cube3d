@@ -71,38 +71,51 @@ typedef struct s_point {
 	int				tmp;
 }	t_point;
 
-
+typedef struct	s_values
+{
+	double	x_ray;			//ray coordinates
+	double	y_ray;
+	double	delta_dist_x;	//distance between to x walls
+	double	delta_dist_y;
+	double	side_dist_x;	//distance between player and next x wall
+	double	side_dist_y;
+	double	wall_dist;		//distance traveled by the ray until it hits a wall
+	int		map_x;			//coordinates of the tile the player is in
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		hit;			//set to 1 when the ray hits a wall
+	int		side;			//to determine which side of the wall was hit
+}	t_values;
 
 typedef struct	s_data
 {
-	void	*mlx;
-	void	*window;
-    char	**map;
-	t_key	key;
-    double	x_player;
-    double	y_player;
-	double	x_dir;
-	double	y_dir;
-	double	x_plane;
-	double	y_plane;
-    char	dir;
-	t_img	screen;
-    t_img	n_wall;
-    t_img	w_wall;
-    t_img	e_wall;
-    t_img	s_wall;
-    int		c_color;
-    int		f_color;
-	int		ac;
-	char	**av;
-	int		exit_code;
+	void		*mlx;
+	void		*window;
+    char		**map;
+	t_key		key;
+    double		x_player;
+    double		y_player;
+	double		x_dir;
+	double		y_dir;
+	double		x_plane;
+	double		y_plane;
+    char		dir;
+	t_img		screen;
+    t_img		n_wall;
+    t_img		w_wall;
+    t_img		e_wall;
+    t_img		s_wall;
+    int			c_color;
+    int			f_color;
+	int			ac;
+	char		**av;
+	int			exit_code;
 	t_point		*map_first;
 	t_point		*map_end;
 	int			nb_l;
 	int			ll;
 }    t_data;
-
-
 
 /* PARSING */
 int		ft_parsing(t_data *data);
@@ -118,11 +131,13 @@ int		ft_max(int nb1, int nb2);
 void	ft_debug_map(t_data *data);
 int		ft_fill_map_line(t_data *data, int i, t_point **point);
 
-
 /* EXECUTION */
 int		ft_exec(t_data *data);
-void	ft_raycasting(t_data *data);
 int		ft_init_mlx(t_data *data);
+void	ft_raycasting(t_data *data);
+void	ft_init_step(t_data *data, t_values *v);
+void	ft_init_values(t_data *data, t_values *v, int i);
+void	ft_algorithm(t_data *d, t_values *v);
 int		ft_exit_program(t_data *data);
 int		ft_key_press(int keycode, t_data *data);
 int		ft_key_release(int keycode, t_data *data);
@@ -131,4 +146,5 @@ int		ft_load_images(t_data *data);
 /* FREE */
 void	ft_free_parsing(t_data *data);
 void	ft_free_map(t_data *data);
+
 #endif

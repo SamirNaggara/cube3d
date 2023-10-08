@@ -19,15 +19,13 @@ int	main(int ac, char **av)
 	data = (t_data){0}; //init toute la structure a 0
 	data.ac = ac;
 	data.av = av;
-	if (!ft_parsing(&data))
-		return (ft_exit_program(&data), 1);
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		return (1);
+	if (!ft_parsing(&data))
+		return (ft_exit_program(&data), 1);
 	if (!ft_load_images(&data))
 		return (1);  //free a ajouter
 	ft_exec(&data);
 	return (ft_exit_program(&data), 1);
 }
-
-
