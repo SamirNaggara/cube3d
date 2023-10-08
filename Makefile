@@ -24,6 +24,7 @@ SOURCES	=	./main.c \
 			./$(SOURCE_FOLDER)/execution/raycasting.c \
 			./$(SOURCE_FOLDER)/execution/input.c \
 			./$(SOURCE_FOLDER)/execution/load_image.c \
+			./$(SOURCE_FOLDER)/free/exit_program.c \
 
 OBJETS	=	$(SOURCES:.c=.o)			
 
