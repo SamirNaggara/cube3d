@@ -17,6 +17,7 @@ RESET			= 	\033[0m
 SOURCES	=	./main.c \
 			./$(SOURCE_FOLDER)/parsing/parsing.c \
 			./$(SOURCE_FOLDER)/execution/execution.c \
+			./$(SOURCE_FOLDER)/execution/raycasting.c \
 			./$(SOURCE_FOLDER)/execution/input.c \
 			./$(SOURCE_FOLDER)/execution/load_image.c \
 
