@@ -15,7 +15,11 @@ RESET			= 	\033[0m
 
 
 SOURCES	=	./main.c \
+			./$(SOURCE_FOLDER)/parsing/fill_map.c \
+			./$(SOURCE_FOLDER)/parsing/fill_parsing.c \
+			./$(SOURCE_FOLDER)/parsing/open_map.c \
 			./$(SOURCE_FOLDER)/parsing/parsing.c \
+			./$(SOURCE_FOLDER)/parsing/utils.c \
 			./$(SOURCE_FOLDER)/execution/execution.c \
 			./$(SOURCE_FOLDER)/execution/raycasting.c \
 			./$(SOURCE_FOLDER)/execution/input.c \
