@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:34:58 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/07 17:13:57 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/08 16:18:15 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # define D 100
 # define LEFT 65361
 # define RIGHT 65363
+
+# define E_MAP "Error\nMap is empty or was not properly open\n"
+
 
 # include <stdlib.h>
 # include "libft-plus/libft/libft.h"
@@ -56,6 +59,20 @@ typedef struct	s_img
 	int		height;
 }	t_img;
 
+typedef struct s_point {
+	int				x;
+	int				y;
+	char			type;
+	struct s_point	*up;
+	struct s_point	*dw;
+	struct s_point	*lf;
+	struct s_point	*rg;
+	struct s_point	*next;
+	int				tmp;
+}	t_point;
+
+
+
 typedef struct	s_data
 {
 	void	*mlx;
@@ -79,11 +96,28 @@ typedef struct	s_data
 	int		ac;
 	char	**av;
 	int		exit_code;
+	t_point		*map_first;
+	t_point		*map_end;
+	int			nb_l;
+	int			ll;
 }    t_data;
 
 
+
 /* PARSING */
-int	ft_parsing(t_data *data);
+int		ft_parsing(t_data *data);
+int		ft_open_map(t_data *data);
+void	ft_debug_parsing(t_data *data);
+int		ft_add_horizontal(t_data *data);
+int		ft_add_vertical(t_data *data);
+t_point	*ft_found_down(t_point *point);
+int		ft_add_line_in_list(t_data *data, char *line);
+int		ft_add_point(t_data *data, char type);
+int		ft_fill_map_array(t_data *data);
+int		ft_max(int nb1, int nb2);
+void	ft_debug_map(t_data *data);
+int		ft_fill_map_line(t_data *data, int i, t_point **point);
+
 
 /* EXECUTION */
 int		ft_exec(t_data *data);
