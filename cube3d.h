@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:34:58 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/08 16:18:15 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:38:40 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,4 +128,7 @@ int		ft_key_press(int keycode, t_data *data);
 int		ft_key_release(int keycode, t_data *data);
 int		ft_load_images(t_data *data);
 
+/* FREE */
+void	ft_free_parsing(t_data *data);
+void	ft_free_map(t_data *data);
 #endif
