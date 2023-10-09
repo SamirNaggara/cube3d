@@ -30,6 +30,8 @@
 # define E_COLORS_PARSE "Error\nProblem with the parsing of the colors\n"
 # define E_EMPTY_LINE "Empty line in map\n"
 
+# define ROT 0.01
+# define MOVE 0.04
 
 # include <stdlib.h>
 # include "libft-plus/libft/libft.h"
@@ -163,6 +165,8 @@ void	ft_init_values(t_data *data, t_values *v, int x);
 void	ft_algorithm(t_data *d, t_values *v);
 void	ft_pixel_put(t_img *img, int x, int y, int color);
 void	ft_draw(t_data *data, t_values *v, int x);
+void	ft_rotate(t_data *data, int side);
+void	ft_move(t_data *data, double x_dir, double y_dir, int side);
 int		ft_exit_program(t_data *data);
 int		ft_key_press(int keycode, t_data *data);
 int		ft_key_release(int keycode, t_data *data);

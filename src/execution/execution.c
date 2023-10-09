@@ -12,19 +12,21 @@
 
 #include "../../cube3d.h"
 
-#define ROT 0.005
 
 int	ft_loop(t_data *data)
 {
-	if (data->key.right)
-    {
-      double oldDirX = data->x_dir;
-      data->x_dir = data->x_dir * cos(-ROT) - data->y_dir * sin(-ROT);
-      data->y_dir = oldDirX * sin(-ROT) + data->y_dir * cos(-ROT);
-      double oldPlaneX = data->x_plane;
-      data->x_plane = data->x_plane * cos(-ROT) - data->y_plane * sin(-ROT);
-      data->y_plane = oldPlaneX * sin(-ROT) + data->y_plane * cos(-ROT);
-    }
+	if (data->key.w && !data->key.s)
+		ft_move(data, data->x_dir, data->y_dir, 1);
+	else if (data->key.s && !data->key.w)
+		ft_move(data, data->x_dir, data->y_dir, -1);
+	if (data->key.a && !data->key.d)
+		ft_move(data, data->x_plane, data->y_plane, -1);
+	else if (data->key.d && !data->key.a)
+		ft_move(data, data->x_plane, data->y_plane, 1);
+	if (data->key.right && !data->key.left)
+		ft_rotate(data, 1);
+	else if (data->key.left && !data->key.right)
+		ft_rotate(data, -1);
 	ft_raycasting(data);
 	return (0);
 }
@@ -47,8 +49,8 @@ static void	tmp_init(t_data *data)
 	data->x_player = 5.5;
 	data->y_player = 8.5;
 	data->x_dir = 0;
-	data->y_dir = 1;
-	data->x_plane = -0.66;
+	data->y_dir = -1;
+	data->x_plane = 0.66;
 	data->y_plane = 0;
 }
 
