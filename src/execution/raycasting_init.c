@@ -24,6 +24,13 @@ void	ft_init_step(t_data *data, t_values *v)
 	}
 }
 
+double	ft_abs(double value)
+{
+	if (value < 0)
+		return (value * -1);
+	return (value);
+}
+
 void	ft_init_values(t_data *data, t_values *v, int x)
 {
 	v->map_x = (int)data->x_player;
@@ -32,12 +39,10 @@ void	ft_init_values(t_data *data, t_values *v, int x)
 	v->y_ray = data->y_dir - data->y_plane + (x * 2 * data->y_plane / WIN_X);
 	v->delta_dist_x = 1e30;
 	if (v->x_ray != 0)
-		v->delta_dist_x
-			= sqrt(1 + ((v->y_ray / v->x_ray) * (v->y_ray * v->x_ray)));
+		v->delta_dist_x = ft_abs(1 / v->x_ray);
 	v->delta_dist_y = 1e30;
 	if (v->y_ray != 0)
-		v->delta_dist_y
-			= sqrt(1 + ((v->x_ray / v->y_ray) * (v->x_ray * v->y_ray)));
+		v->delta_dist_y = ft_abs(1 / v->y_ray);;
 	ft_init_step(data, v);
 	v->hit = 0;
 }

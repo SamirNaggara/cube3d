@@ -33,7 +33,7 @@ void	ft_draw(t_data *data, t_values *v, int x)
 	line_height = WIN_Y / v->wall_dist;
 	draw_start = (WIN_Y / 2) - (line_height / 2);
 	draw_end = (WIN_Y / 2) + (line_height / 2);
-	ft_draw_vertical_line(&data->screen, x, 0, draw_start, 0x999999);
-	ft_draw_vertical_line(&data->screen, x, draw_start, draw_end, 0xa00000);
-	ft_draw_vertical_line(&data->screen, x, draw_end, WIN_Y, 0x222222);
+	ft_draw_vertical_line(&data->screen, x, 0, draw_start, data->c_color);
+	ft_draw_vertical_line(&data->screen, x, draw_start, draw_end, 0x555555);
+	ft_draw_vertical_line(&data->screen, x, draw_end, WIN_Y, data->f_color);
 }

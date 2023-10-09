@@ -26,6 +26,7 @@ SOURCES	=	./main.c \
 			./$(SOURCE_FOLDER)/execution/raycasting.c \
 			./$(SOURCE_FOLDER)/execution/raycasting_init.c \
 			./$(SOURCE_FOLDER)/execution/draw.c \
+			./$(SOURCE_FOLDER)/execution/move.c \
 			./$(SOURCE_FOLDER)/execution/input.c \
 			./$(SOURCE_FOLDER)/execution/load_image.c \
 			./$(SOURCE_FOLDER)/free/exit_program.c \
