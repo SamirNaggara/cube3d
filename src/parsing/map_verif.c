@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   map_verif.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:12:38 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 21:59:25 by snaggara         ###   ########.fr       */
+/*   Created: 2023/10/09 21:58:47 by snaggara          #+#    #+#             */
+/*   Updated: 2023/10/09 22:00:44 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube3d.h"
 
-int	ft_max(int nb1, int nb2)
+int	ft_verif_map(t_data *data)
 {
-	if (nb1 >= nb2)
-		return (nb1);
-	return (nb2);
+	if (!ft_authorize_char(data))
+		return (ft_printf(E_CHAR), 0);
+	if (!ft_one_player(data))
+		return (ft_printf(E_PLAYER), 0);
+	if (!ft_map_open(data))
+		return (ft_printf(E_MAP_OPEN), 0);
+	return (1);
 }
-
-int	ft_char_in_array(char c, char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i++] == c)
-			return (1);
-	}
-	return (0);
-}
-

@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:35:04 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 19:20:22 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:51:05 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	main(int ac, char **av)
 		return (ft_exit_program(&data), 1);
 	if (!ft_load_images(&data))
 		return (ft_printf(E_IMG), 1);  //free a ajouter
-	ft_exec(&data);
+	//ft_exec(&data);
 	return (ft_exit_program(&data), 1);
 }
