@@ -24,12 +24,12 @@ void	ft_init_step(t_data *data, t_values *v)
 	}
 }
 
-void	ft_init_values(t_data *data, t_values *v, int i)
+void	ft_init_values(t_data *data, t_values *v, int x)
 {
 	v->map_x = (int)data->x_player;
 	v->map_y = (int)data->y_player;
-	v->x_ray = data->x_dir - data->x_plane + (i * 2 * data->x_plane / WIN_X);
-	v->y_ray = data->y_dir - data->y_plane + (i * 2 * data->y_plane / WIN_X);
+	v->x_ray = data->x_dir - data->x_plane + (x * 2 * data->x_plane / WIN_X);
+	v->y_ray = data->y_dir - data->y_plane + (x * 2 * data->y_plane / WIN_X);
 	v->delta_dist_x = 1e30;
 	if (v->x_ray != 0)
 		v->delta_dist_x

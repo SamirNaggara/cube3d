@@ -12,9 +12,20 @@
 
 #include "../../cube3d.h"
 
+#define ROT 0.005
+
 int	ft_loop(t_data *data)
 {
-	(void)data;
+	if (data->key.right)
+    {
+      double oldDirX = data->x_dir;
+      data->x_dir = data->x_dir * cos(-ROT) - data->y_dir * sin(-ROT);
+      data->y_dir = oldDirX * sin(-ROT) + data->y_dir * cos(-ROT);
+      double oldPlaneX = data->x_plane;
+      data->x_plane = data->x_plane * cos(-ROT) - data->y_plane * sin(-ROT);
+      data->y_plane = oldPlaneX * sin(-ROT) + data->y_plane * cos(-ROT);
+    }
+	ft_raycasting(data);
 	return (0);
 }
 
@@ -31,10 +42,21 @@ int	ft_init_mlx(t_data *data)
 	return (0);
 }
 
+static void	tmp_init(t_data *data)
+{
+	data->x_player = 5.5;
+	data->y_player = 8.5;
+	data->x_dir = 0;
+	data->y_dir = 1;
+	data->x_plane = -0.66;
+	data->y_plane = 0;
+}
+
 int	ft_exec(t_data *data)
 {
 	if (ft_init_mlx(data))
 		return (data->exit_code = 1, 1);
+	tmp_init(data);
 	ft_raycasting(data);
 	mlx_hook(data->window, 2, 1L << 0, ft_key_press, data);
 	mlx_hook(data->window, 3, 1L << 1, ft_key_release, data);

@@ -1,15 +1,5 @@
 #include "../../cube3d.h"
 
-static void	tmp_init(t_data *data)
-{
-	data->x_player = 5.5;
-	data->y_player = 8.5;
-	data->x_dir = 1;
-	data->y_dir = 0;
-	data->x_plane = 0;
-	data->y_plane = 0.66;
-}
-
 void	ft_algorithm(t_data *data, t_values *v)
 {
 	while (v->hit == 0)
@@ -29,19 +19,24 @@ void	ft_algorithm(t_data *data, t_values *v)
 		if (data->map[v->map_y][v->map_x] == '1')
 			v->hit = 1;
 	}
+	if (v->side == 0)
+		v->wall_dist = v->side_dist_x - v->delta_dist_x;
+	else
+		v->wall_dist = v->side_dist_y - v->delta_dist_y;
 }
 
 void	ft_raycasting(t_data *data)
 {
 	t_values	v;
-	int			i;
+	int			x;
 
-	i = 0;
-	tmp_init(data);
-	while (i < WIN_X)
+	x = 0;
+	while (x < WIN_X)
 	{
-		ft_init_values(data, &v, i);
+		ft_init_values(data, &v, x);
 		ft_algorithm(data, &v);
-		i++;
+		ft_draw(data, &v, x);
+		x++;
 	}
+	mlx_put_image_to_window(data->mlx, data->window, data->screen.img_ptr, 0, 0);
 }
