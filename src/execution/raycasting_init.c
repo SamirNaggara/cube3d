@@ -1,5 +1,26 @@
 #include "../../cube3d.h"
 
+void	ft_init_dir(t_data *data)
+{
+	if (data->dir == 'N')
+		data->y_dir = -1;
+	else if (data->dir == 'S')
+		data->y_dir = 1;
+	else if (data->dir == 'W')
+		data->x_dir = -1;
+	else if (data->dir == 'E')
+		data->x_dir = 1;
+	if (data->x_dir != 0)
+		data->y_plane = 0.66;
+	else
+		data->x_plane = 0.66;
+	if (data->x_dir > 0|| data->y_dir > 0)
+	{
+		data->x_plane *= -1;
+		data->y_plane *= -1;
+	}
+}
+
 void	ft_init_step(t_data *data, t_values *v)
 {
 	if (v->x_ray < 0)

@@ -16,8 +16,15 @@ void	ft_rotate(t_data *data, int side)
 
 void	ft_move(t_data *data, double x_dir, double y_dir, int side)
 {
-	if (data->map[(int)data->y_player][(int)(data->x_player + (x_dir * MOVE * side))] != '1')
-		data->x_player += x_dir * MOVE * side;
-	if (data->map[(int)((data->y_player + y_dir * MOVE * side))][(int)data->x_player] != '1')
-		data->y_player += y_dir * MOVE * side;
+	double	speed;
+
+	speed = MOVE;
+	if (data->key.shift && !data->key.ctrl)
+		speed *= 2;
+	else if (data->key.ctrl && !data->key.shift)
+		speed *= 0.4;
+	if (data->map[(int)data->y_player][(int)(data->x_player + (x_dir * speed * side))] != '1')
+		data->x_player += x_dir * speed * side;
+	if (data->map[(int)((data->y_player + y_dir * speed * side))][(int)data->x_player] != '1')
+		data->y_player += y_dir * speed * side;
 }

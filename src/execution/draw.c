@@ -24,16 +24,48 @@ int	ft_draw_vertical_line(t_img *img, int x, int start, int end, int color)
 	return (y);
 }
 
+void	ft_draw_texture(t_data *data, t_values *v, int x)
+{
+	t_img	*tex;
+	double	wall_x;
+	int		y;
+	int		color;
+
+	tex = NULL;
+	if (v->side == 1 && v->y_ray <= 0)
+		tex = &data->s_wall;
+	else if (v->side == 1 && v->y_ray > 0)
+		tex = &data->n_wall;
+	else if (v->side == 0 && v->x_ray <= 0)
+		tex = &data->e_wall;
+	else if (v->side == 0 && v->x_ray > 0)
+		tex = &data->w_wall;
+	if (v->side == 1)
+		wall_x = data->x_player + v->wall_dist * v->x_ray;
+	else
+		wall_x = data->y_player + v->wall_dist * v->y_ray;
+	wall_x -= (int)wall_x;
+	y = 0;
+	while (y + v->start < v->end)
+	{
+		color = *(unsigned int *)(tex->address + ((y * tex->height / v->height) \
+		* tex->size_line + (int)(wall_x * (double)tex->width) * (tex->bpp / 8)));
+		ft_pixel_put(&data->screen, x, y + v->start, color);
+		y++;
+	}
+}
+
 void	ft_draw(t_data *data, t_values *v, int x)
 {
-	int	line_height;
-	int	draw_start;
-	int	draw_end;
+	int	diff;
 
-	line_height = WIN_Y / v->wall_dist;
-	draw_start = (WIN_Y / 2) - (line_height / 2);
-	draw_end = (WIN_Y / 2) + (line_height / 2);
-	ft_draw_vertical_line(&data->screen, x, 0, draw_start, data->c_color);
-	ft_draw_vertical_line(&data->screen, x, draw_start, draw_end, 0x555555);
-	ft_draw_vertical_line(&data->screen, x, draw_end, WIN_Y, data->f_color);
+	diff = 0;
+	if (data->key.ctrl && !data->key.shift)
+		diff = WIN_Y / 12;
+	v->height = WIN_Y / v->wall_dist;
+	v->start = (WIN_Y / 2) - (v->height / 2) - diff;
+	v->end = (WIN_Y / 2) + (v->height / 2) - diff;
+	ft_draw_vertical_line(&data->screen, x, 0, v->start, data->c_color);
+	ft_draw_texture(data, v, x);
+	ft_draw_vertical_line(&data->screen, x, v->end, WIN_Y, data->f_color);
 }
