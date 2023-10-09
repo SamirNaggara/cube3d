@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 17:32:25 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/08 17:43:04 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:20:51 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_exit_program(t_data *data)
 {
 	ft_free_parsing(data);
 	ft_free_map(data);
+	ft_free_img_path(data);
 	if (data->n_wall.img_ptr)
 		mlx_destroy_image(data->mlx, data->n_wall.img_ptr);
 	if (data->w_wall.img_ptr)
@@ -32,6 +33,19 @@ int	ft_exit_program(t_data *data)
 	free(data->mlx);
 	exit(data->exit_code);
 	return (0);
+}
+
+void	ft_free_img_path(t_data *data)
+{
+	if (data->n_wall.path)
+		free(data->n_wall.path);
+	if (data->s_wall.path)
+		free(data->s_wall.path);
+	if (data->e_wall.path)
+		free(data->e_wall.path);
+	if (data->w_wall.path)
+		free(data->w_wall.path);
+	
 }
 
 void	ft_free_parsing(t_data *data)

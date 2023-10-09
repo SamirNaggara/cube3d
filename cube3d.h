@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:34:58 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/08 17:38:40 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:04:29 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # define RIGHT 65363
 
 # define E_MAP "Error\nMap is empty or was not properly open\n"
+# define E_WALL_PARSE "Error\nProblem with the parsing of the walls images\n"
+# define E_COLORS_PARSE "Error\nProblem with the parsing of the colors\n"
+# define E_EMPTY_LINE "Empty line in map\n"
 
 
 # include <stdlib.h>
@@ -57,6 +60,7 @@ typedef struct	s_img
 	int		endian;
 	int		width;
 	int		height;
+	char	*path;
 }	t_img;
 
 typedef struct s_point {
@@ -117,9 +121,17 @@ typedef struct	s_data
 	int			ll;
 }    t_data;
 
+typedef struct	s_rgb
+{
+	int	red;
+	int	green;
+	int	blue;
+}	t_rgb;
+
+
 /* PARSING */
 int		ft_parsing(t_data *data);
-int		ft_open_map(t_data *data);
+int		ft_parse_input_file(t_data *data);
 void	ft_debug_parsing(t_data *data);
 int		ft_add_horizontal(t_data *data);
 int		ft_add_vertical(t_data *data);
@@ -130,7 +142,18 @@ int		ft_fill_map_array(t_data *data);
 int		ft_max(int nb1, int nb2);
 void	ft_debug_map(t_data *data);
 int		ft_fill_map_line(t_data *data, int i, t_point **point);
-
+int		ft_read_image_input(t_data *data, int fd);
+int		ft_insert_wall_path(t_data *data, char *line);
+int		ft_wall_paths_exist(t_data *data);
+void	ft_init_image_struct(t_data *data);
+int		ft_get_colors_input(t_data *data, int fd);
+int		ft_insert_colors(t_data *data, char *line);
+int		ft_get_color_from_rgb(char *line);
+int		ft_extract_number(char *str);
+int		ft_create_rgb(int r, int g, int b);
+int		ft_read_map(t_data *data, int fd);
+char	*ft_read_while_space(int fd);
+int		ft_cmp_last_wall(t_data *data, char *line);
 /* EXECUTION */
 int		ft_exec(t_data *data);
 int		ft_init_mlx(t_data *data);
@@ -146,5 +169,6 @@ int		ft_load_images(t_data *data);
 /* FREE */
 void	ft_free_parsing(t_data *data);
 void	ft_free_map(t_data *data);
+void	ft_free_img_path(t_data *data);
 
 #endif

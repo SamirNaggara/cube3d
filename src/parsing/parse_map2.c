@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_parsing.c                                     :+:      :+:    :+:   */
+/*   parse_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/08 16:22:42 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/08 16:22:59 by snaggara         ###   ########.fr       */
+/*   Created: 2023/10/09 16:12:26 by snaggara          #+#    #+#             */
+/*   Updated: 2023/10/09 16:12:28 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int	ft_add_line_in_list(t_data *data, char *line)
 	int	i;
 
 	i = 0;
+	if (*line == '\n')
+		return (ft_printf(E_EMPTY_LINE), 0);
 	while (line[i] && line[i] != '\n')
 	{
 		if (!ft_add_point(data, line[i]))
