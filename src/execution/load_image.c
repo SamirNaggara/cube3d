@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:06:36 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/07 17:12:39 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:34:23 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,24 @@
 
 int	ft_load_images(t_data *data)
 {
-	(void)data;
-	ft_printf("Load image\n");
+	if (!ft_create_image(data, &data->n_wall))
+		return (0);
+	if (!ft_create_image(data, &data->e_wall))
+		return (0);
+	if (!ft_create_image(data, &data->s_wall))
+		return (0);
+	if (!ft_create_image(data, &data->w_wall))
+		return (0);
+	return (1);
+}
+
+int	ft_create_image(t_data *data, t_img *img)
+{
+	img->img_ptr = mlx_xpm_file_to_image(data->mlx, data->n_wall.path, &img->width, &img->height);
+	if (!img->img_ptr)
+		return (0);
+	img->address = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line, &img->endian);
+	if (!img->address)
+		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:34:58 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 16:04:29 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:31:26 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define E_WALL_PARSE "Error\nProblem with the parsing of the walls images\n"
 # define E_COLORS_PARSE "Error\nProblem with the parsing of the colors\n"
 # define E_EMPTY_LINE "Empty line in map\n"
-
+# define E_IMG "An error occur while loading an image\n"
 # define ROT 0.01
 # define MOVE 0.04
 
@@ -156,6 +156,7 @@ int		ft_create_rgb(int r, int g, int b);
 int		ft_read_map(t_data *data, int fd);
 char	*ft_read_while_space(int fd);
 int		ft_cmp_last_wall(t_data *data, char *line);
+char	*ft_strdup_without_nl(char *s);
 /* EXECUTION */
 int		ft_exec(t_data *data);
 int		ft_init_mlx(t_data *data);
@@ -171,6 +172,10 @@ int		ft_exit_program(t_data *data);
 int		ft_key_press(int keycode, t_data *data);
 int		ft_key_release(int keycode, t_data *data);
 int		ft_load_images(t_data *data);
+
+/* LOAD IMAGE */
+int	ft_load_images(t_data *data);
+int	ft_create_image(t_data *data, t_img *img);
 
 /* FREE */
 void	ft_free_parsing(t_data *data);
