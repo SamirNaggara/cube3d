@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_verif.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 16:35:04 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 22:04:33 by snaggara         ###   ########.fr       */
+/*   Created: 2023/10/09 21:58:47 by snaggara          #+#    #+#             */
+/*   Updated: 2023/10/09 22:00:44 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "../../cube3d.h"
 
-int	main(int ac, char **av)
+int	ft_verif_map(t_data *data)
 {
-	t_data	data;
-
-	data = (t_data){0}; //init toute la structure a 0
-	data.ac = ac;
-	data.av = av;
-	data.mlx = mlx_init();
-	if (!data.mlx)
-		return (1);
-	if (!ft_parsing(&data))
-		return (ft_exit_program(&data), 1);
-	if (!ft_load_images(&data))
-		return (ft_printf(E_IMG), 1);  //free a ajouter
-	ft_exec(&data);
-	return (ft_exit_program(&data), 1);
+	if (!ft_authorize_char(data))
+		return (ft_printf(E_CHAR), 0);
+	if (!ft_one_player(data))
+		return (ft_printf(E_PLAYER), 0);
+	if (!ft_map_open(data))
+		return (ft_printf(E_MAP_OPEN), 0);
+	return (1);
 }

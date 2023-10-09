@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:12:32 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 16:12:34 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:00:36 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,17 @@ int	ft_parsing(t_data *data)
 		return (0);
 	if (!ft_fill_map_array(data))
 		return (0);
+	if (!ft_verif_map(data))
+		return (0);
 	ft_debug_map(data);
 	return (1);
 }
+
+
+
+
+
+
 
 void	ft_init_image_struct(t_data *data)
 {
