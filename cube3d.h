@@ -202,8 +202,8 @@ int		ft_key_release(int keycode, t_data *data);
 int		ft_load_images(t_data *data);
 
 /* LOAD IMAGE */
-int	ft_load_images(t_data *data);
-int	ft_create_image(t_data *data, t_img *img);
+int		ft_load_images(t_data *data);
+int		ft_create_image(t_data *data, t_img *img, char *path);
 
 /* FREE */
 void	ft_free_parsing(t_data *data);

@@ -48,7 +48,7 @@ static void	tmp_init(t_data *data)
 {
 	data->x_player = 5.5;
 	data->y_player = 8.5;
-	data->dir = 'S';
+	data->dir = 'N';
 }
 
 int	ft_exec(t_data *data)
