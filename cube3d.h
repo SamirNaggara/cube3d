@@ -24,13 +24,17 @@
 # define D 100
 # define LEFT 65361
 # define RIGHT 65363
+# define FORWARD 65362
+# define BACK 65364
+# define SHIFT 65505
+# define CTRL 65507
 
 # define E_MAP "Error\nMap is empty or was not properly open\n"
 # define E_WALL_PARSE "Error\nProblem with the parsing of the walls images\n"
 # define E_COLORS_PARSE "Error\nProblem with the parsing of the colors\n"
 # define E_EMPTY_LINE "Empty line in map\n"
 # define E_IMG "An error occur while loading an image\n"
-# define ROT 0.01
+# define ROT 0.014
 # define MOVE 0.04
 
 # include <stdlib.h>
@@ -51,6 +55,10 @@ typedef struct s_key
 	int	d;
 	int	left;
 	int	right;
+	int	forward;
+	int	back;
+	int	shift;
+	int	ctrl;
 }	t_key;
 
 typedef struct	s_img
@@ -92,6 +100,9 @@ typedef struct	s_values
 	int		step_y;
 	int		hit;			//set to 1 when the ray hits a wall
 	int		side;			//to determine which side of the wall was hit
+	int		height;
+	int		start;
+	int		end;
 }	t_values;
 
 typedef struct	s_data
@@ -160,12 +171,14 @@ char	*ft_strdup_without_nl(char *s);
 /* EXECUTION */
 int		ft_exec(t_data *data);
 int		ft_init_mlx(t_data *data);
+void	ft_init_dir(t_data *data);
 void	ft_raycasting(t_data *data);
 void	ft_init_step(t_data *data, t_values *v);
 void	ft_init_values(t_data *data, t_values *v, int x);
 void	ft_algorithm(t_data *d, t_values *v);
 void	ft_pixel_put(t_img *img, int x, int y, int color);
 void	ft_draw(t_data *data, t_values *v, int x);
+int		ft_draw_vertical_line(t_img *img, int x, int start, int end, int color);
 void	ft_rotate(t_data *data, int side);
 void	ft_move(t_data *data, double x_dir, double y_dir, int side);
 int		ft_exit_program(t_data *data);

@@ -15,9 +15,9 @@
 
 int	ft_loop(t_data *data)
 {
-	if (data->key.w && !data->key.s)
+	if ((data->key.w || data->key.forward) && !(data->key.s || data->key.back))
 		ft_move(data, data->x_dir, data->y_dir, 1);
-	else if (data->key.s && !data->key.w)
+	else if ((data->key.s || data->key.back) && !(data->key.w || data->key.forward))
 		ft_move(data, data->x_dir, data->y_dir, -1);
 	if (data->key.a && !data->key.d)
 		ft_move(data, data->x_plane, data->y_plane, -1);
@@ -48,10 +48,7 @@ static void	tmp_init(t_data *data)
 {
 	data->x_player = 5.5;
 	data->y_player = 8.5;
-	data->x_dir = 0;
-	data->y_dir = -1;
-	data->x_plane = 0.66;
-	data->y_plane = 0;
+	data->dir = 'S';
 }
 
 int	ft_exec(t_data *data)
@@ -59,6 +56,7 @@ int	ft_exec(t_data *data)
 	if (ft_init_mlx(data))
 		return (data->exit_code = 1, 1);
 	tmp_init(data);
+	ft_init_dir(data);
 	ft_raycasting(data);
 	mlx_hook(data->window, 2, 1L << 0, ft_key_press, data);
 	mlx_hook(data->window, 3, 1L << 1, ft_key_release, data);
