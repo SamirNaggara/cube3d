@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:12:01 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 16:12:03 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:33:28 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ int	ft_insert_wall_path(t_data *data, char *line)
 {
 	if (ft_strncmp(line, "NO ", 3) == 0)
 	{
-		data->n_wall.path = ft_strdup(line + 3);
+		data->n_wall.path = ft_strdup_without_nl(line + 3);
 		if (!data->n_wall.path)
 			return (0);
 	}
 	if (ft_strncmp(line, "SO ", 3) == 0)
 	{
-		data->s_wall.path = ft_strdup(line + 3);
+		data->s_wall.path = ft_strdup_without_nl(line + 3);
 		if (!data->s_wall.path)
 			return (0);
 	}
 	if (ft_strncmp(line, "WE ", 3) == 0)
 	{
-		data->w_wall.path = ft_strdup(line + 3);
+		data->w_wall.path = ft_strdup_without_nl(line + 3);
 		if (!data->w_wall.path)
 			return (0);
 	}
@@ -62,11 +62,33 @@ int	ft_cmp_last_wall(t_data *data, char *line)
 {
 	if (ft_strncmp(line, "EA ", 3) == 0)
 	{
-		data->e_wall.path = ft_strdup(line + 3);
+		data->e_wall.path = ft_strdup_without_nl(line + 3);
 		if (!data->e_wall.path)
 			return (0);
 	}
 	return (1);
+}
+
+char	*ft_strdup_without_nl(char *s)
+{
+	char	*result;
+	size_t	size;
+	size_t	i;
+
+	size = ft_strlen(s);
+	result = (char *)malloc(sizeof(char) * (size + 1));
+	if (!result)
+		return (NULL);
+	ft_memset(result, 0, size + 1);
+	if (!result)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+	{
+		result[i] = s[i];
+		i++;
+	}
+	return (result);
 }
 
 int	ft_wall_paths_exist(t_data *data)
