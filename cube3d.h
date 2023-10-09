@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:34:58 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 19:31:26 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:00:56 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,17 @@
 # define D 100
 # define LEFT 65361
 # define RIGHT 65363
+# define DIR "NSWE"
+# define AUTH_CHAR "NSWE01 "
 
 # define E_MAP "Error\nMap is empty or was not properly open\n"
 # define E_WALL_PARSE "Error\nProblem with the parsing of the walls images\n"
 # define E_COLORS_PARSE "Error\nProblem with the parsing of the colors\n"
 # define E_EMPTY_LINE "Empty line in map\n"
 # define E_IMG "An error occur while loading an image\n"
+# define E_PLAYER "Error\nThe map need exactly one player\n"
+# define E_CHAR "Error\nAn not authorize charactere is in the map\n"
+# define E_MAP_OPEN "Error\nThe map shoudn't be as open as your gf\n"
 # define ROT 0.01
 # define MOVE 0.04
 
@@ -157,6 +162,14 @@ int		ft_read_map(t_data *data, int fd);
 char	*ft_read_while_space(int fd);
 int		ft_cmp_last_wall(t_data *data, char *line);
 char	*ft_strdup_without_nl(char *s);
+int		ft_verif_map(t_data *data);
+int		ft_one_player(t_data *data);
+int		ft_char_in_array(char c, char *str);
+int		ft_authorize_char(t_data *data);
+int		ft_map_open(t_data *data);
+
+int		ft_tile_available(t_point *point);
+
 /* EXECUTION */
 int		ft_exec(t_data *data);
 int		ft_init_mlx(t_data *data);
