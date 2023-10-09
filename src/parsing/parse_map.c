@@ -1,16 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_map.c                                         :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/08 16:20:33 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/08 16:22:52 by snaggara         ###   ########.fr       */
+/*   Created: 2023/10/09 16:12:18 by snaggara          #+#    #+#             */
+/*   Updated: 2023/10/09 16:12:20 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube3d.h"
+
+int	ft_read_map(t_data *data, int fd)
+{
+	char	*line;
+
+	line = ft_read_while_space(fd);
+	if (!line)
+		return (0);
+	data->nb_l++;
+	data->ll = (int)ft_strlen(line) - 1;
+	while (line)
+	{
+		if (!ft_add_line_in_list(data, line))
+			return (free(line), 0);
+		free(line);
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		data->ll = ft_max(data->ll, (int)ft_strlen(line) - 1);
+		data->nb_l++;
+	}
+	return (free(line), 1);
+}
 
 int	ft_fill_map_array(t_data *data)
 {
@@ -68,4 +91,19 @@ void	ft_debug_map(t_data *data)
 		ft_printf("\n");
 		i++;
 	}
+}
+
+char	*ft_read_while_space(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line && *line == '\n')
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	if (!line)
+		return (close(fd), NULL);
+	return (line);
 }

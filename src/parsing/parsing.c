@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 16:59:39 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/08 16:30:19 by snaggara         ###   ########.fr       */
+/*   Created: 2023/10/09 16:12:32 by snaggara          #+#    #+#             */
+/*   Updated: 2023/10/09 16:12:34 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,22 @@
 
 int	ft_parsing(t_data *data)
 {
-	if (!ft_open_map(data))
-		return (ft_printf(E_MAP), 0);
+	ft_init_image_struct(data);
+	if (!ft_parse_input_file(data))
+		return (0);
 	if (!ft_fill_map_array(data))
 		return (0);
 	ft_debug_map(data);
 	return (1);
+}
+
+void	ft_init_image_struct(t_data *data)
+{
+	data->screen = (t_img){0};
+	data->n_wall = (t_img){0};
+	data->w_wall = (t_img){0};
+	data->e_wall = (t_img){0};
+	data->s_wall = (t_img){0};
+	data->c_color = -1;
+	data->f_color = -1;
 }
