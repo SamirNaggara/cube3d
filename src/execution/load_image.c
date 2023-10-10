@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cube3d.h"
+#include "cube3d.h"
 
 int	ft_load_images(t_data *data)
 {
@@ -27,10 +27,12 @@ int	ft_load_images(t_data *data)
 
 int	ft_create_image(t_data *data, t_img *img, char *path)
 {
-	img->img_ptr = mlx_xpm_file_to_image(data->mlx, path, &img->width, &img->height);
+	img->img_ptr = mlx_xpm_file_to_image
+		(data->mlx, path, &img->width, &img->height);
 	if (!img->img_ptr)
 		return (0);
-	img->address = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line, &img->endian);
+	img->address = mlx_get_data_addr
+		(img->img_ptr, &img->bpp, &img->size_line, &img->endian);
 	if (!img->address)
 		return (0);
 	return (1);

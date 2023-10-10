@@ -1,4 +1,4 @@
-#include "../../cube3d.h"
+#include "cube3d.h"
 
 void	ft_algorithm(t_data *data, t_values *v)
 {
@@ -38,5 +38,6 @@ void	ft_raycasting(t_data *data)
 		ft_draw(data, &v, x);
 		x++;
 	}
-	mlx_put_image_to_window(data->mlx, data->window, data->screen.img_ptr, 0, 0);
+	mlx_put_image_to_window
+		(data->mlx, data->window, data->screen.img_ptr, 0, 0);
 }

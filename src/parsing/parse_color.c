@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cube3d.h"
+#include "cube3d.h"
 
 int	ft_get_colors_input(t_data *data, int fd)
 {

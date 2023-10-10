@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cube3d.h"
+#include "cube3d.h"
 
 int	ft_verif_map(t_data *data)
 {
@@ -46,7 +46,7 @@ int	ft_one_player(t_data *data)
 
 void	ft_fill_player_data(t_data *data, t_point *point)
 {
-	data->x_player = point->x;
-	data->y_player = point->y;
+	data->x_player = point->y + 0.5;
+	data->y_player = point->x - 0.5;
 	data->dir = point->type;
 }
