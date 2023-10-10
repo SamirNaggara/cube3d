@@ -48,7 +48,7 @@ all:	lib $(NAME)
 $(OBJECT_FOLDER)%.o: $(SOURCE_FOLDER)%.c $(addprefix $(INCLUDES_FOLDER), $(INCLUDES))
 	@mkdir -p $(@D)
 	@echo "Creation du .o $@"
-	@$(CC) -Wall -Wextra -Werror -I/usr/include -Isrc/minilibx -Iincludes -O3 -c $< -o $@
+	@$(CC) -Wall -Wextra -Werror -I/usr/include -O3 -c $< -o $@
 
 $(NAME):	$(OBJETS)
 	@echo "\nCréation de l'executable cub3D\n"
@@ -58,6 +58,9 @@ lib	:
 	@echo "Je déclenche le Makefile de Libft-plus\n"
 	@$(MAKE) --no-print-directory -C $(LIB_PATH) all
 	@echo "Je sors du Makefile de Libft-plus"
+	@echo "Je déclenche le Makefile de minilibx\n"
+	@$(MAKE) --no-print-directory -C src/minilibx all
+	@echo "Je sors du Makefile de minilibx-plus"
 
 
 clean	:
