@@ -60,7 +60,7 @@ void	ft_draw(t_data *data, t_values *v, int x)
 	int	diff;
 
 	diff = 0;
-	if (data->key.ctrl && !data->key.shift)
+	if (data->key.ctrl && !(data->key.shift || data->key.space))
 		diff = WIN_Y / 12;
 	v->height = WIN_Y / v->wall_dist;
 	v->start = (WIN_Y / 2) - (v->height / 2) - diff;

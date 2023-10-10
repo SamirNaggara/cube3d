@@ -22,6 +22,8 @@ int	ft_key_press(int keycode, t_data *data)
 		data->key.shift = 1;
 	else if (keycode == CTRL)
 		data->key.ctrl = 1;
+	else if (keycode == SPACE)
+		data->key.space = 1;
 	else if (keycode == EXIT)
 		ft_exit_program(data);
 	return (0);
@@ -49,5 +51,7 @@ int	ft_key_release(int keycode, t_data *data)
 		data->key.shift = 0;
 	else if (keycode == CTRL)
 		data->key.ctrl = 0;
+	else if (keycode == SPACE)
+		data->key.space = 0;
 	return (0);
 }
