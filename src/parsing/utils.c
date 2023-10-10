@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:12:38 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 21:59:25 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:09:45 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,3 @@ int	ft_char_in_array(char c, char *str)
 	}
 	return (0);
 }
-

@@ -6,13 +6,13 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:12:01 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 19:33:28 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:00:39 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube3d.h"
 
-int	ft_read_image_input(t_data *data, int fd)
+int	ft_read_data(t_data *data, int fd)
 {
 	char	*line;
 
@@ -22,13 +22,16 @@ int	ft_read_image_input(t_data *data, int fd)
 	while (line)
 	{
 		if (!ft_insert_wall_path(data, line))
-			return (free(line), 0);
+			return (ft_printf(E_WALL_PARSE), free(line), 0);
+		if (!ft_insert_colors(data, line))
+			return (ft_printf(E_COLORS_PARSE), free(line), 0);
 		free(line);
-		if (ft_wall_paths_exist(data))
+		if (ft_wall_paths_exist(data)
+			&& data->c_color != -1 && data->f_color != -1)
 			break ;
 		line = get_next_line(fd);
 		if (!line)
-			return (close(fd), 0);
+			return (ft_printf(E_MISS_DATA), close(fd), 0);
 	}
 	return (1);
 }

@@ -6,25 +6,26 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:12:26 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 16:12:28 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:08:19 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cube3d.h"
 
-void	ft_debug_parsing(t_data *data)
-{
-	t_point	*browse;
+// void	ft_debug_parsing(t_data *data)
+// {
+// 	t_point	*browse;
 
-	browse = data->map_first;
-	while (browse)
-	{
-		ft_printf("Addrs : %p, x : %d, y : %d, type : %c, gauche : %p, droite %p, haut %p, bas %p\n", browse,
-				browse->x, browse->y, browse->type, browse->lf,
-				browse->rg, browse->up, browse->dw);
-		browse = browse->next;
-	}
-}
+// 	browse = data->map_first;
+// 	while (browse)
+// 	{
+// 		ft_printf("Addrs : %p, x : %d, y : %d, type : %c,
+// 				gauche : %p, droite %p, haut %p, bas %p\n", browse,
+// 				browse->x, browse->y, browse->type, browse->lf,
+// 				browse->rg, browse->up, browse->dw);
+// 		browse = browse->next;
+// 	}
+// }
 
 int	ft_add_horizontal(t_data *data)
 {
@@ -94,7 +95,7 @@ int	ft_add_line_in_list(t_data *data, char *line)
 
 	i = 0;
 	if (*line == '\n')
-		return (ft_printf(E_EMPTY_LINE), 0);
+		return (0);
 	while (line[i] && line[i] != '\n')
 	{
 		if (!ft_add_point(data, line[i]))

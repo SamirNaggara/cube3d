@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 17:32:25 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 15:20:51 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:10:05 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	ft_free_img_path(t_data *data)
 		free(data->e_wall.path);
 	if (data->w_wall.path)
 		free(data->w_wall.path);
-	
 }
 
 void	ft_free_parsing(t_data *data)
