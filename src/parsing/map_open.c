@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 22:00:10 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 22:00:53 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:39:31 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,5 @@ int	ft_authorize_char(t_data *data)
 			return (0);
 		point = point->next;
 	}
-	return (1);
-}
-
-int	ft_one_player(t_data *data)
-{
-	t_point	*point;
-	int		nb_player;
-
-	nb_player = 0;
-	point = data->map_first;
-	while (point)
-	{
-		if (ft_char_in_array(point->type, DIR))
-			nb_player++;
-		point = point->next;
-	}
-	if (nb_player != 1)
-		return (0);
 	return (1);
 }
