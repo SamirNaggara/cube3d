@@ -53,12 +53,14 @@ format in input file\n"
 
 # define ROT 0.014
 # define MOVE 0.04
+# define COLLISION 0.3
+# define RAD 6.28319
 
 # include <stdlib.h>
-# include "libft-plus/libft/libft.h"
-# include "libft-plus/printf/ft_printf.h"
-# include "libft-plus/get-next-line/get_next_line.h"
-# include "minilibx/mlx.h"
+# include "libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
+# include "mlx.h"
 # include <math.h>
 # include <stdarg.h>
 # include <string.h>
@@ -203,8 +205,8 @@ void	ft_init_values(t_data *data, t_values *v, int x);
 void	ft_algorithm(t_data *d, t_values *v);
 void	ft_pixel_put(t_img *img, int x, int y, int color);
 void	ft_draw(t_data *data, t_values *v, int x);
-int		ft_draw_vertical_line(t_img *img, int x, int start, int end, int color);
-void	ft_rotate(t_data *data, int side);
+int		ft_draw_vertical_line(t_data *data, int x, int start, int end);
+void	ft_rotate(t_data *data, double rot, int side);
 void	ft_move(t_data *data, double x_dir, double y_dir, int side);
 int		ft_exit_program(t_data *data);
 int		ft_key_press(int keycode, t_data *data);

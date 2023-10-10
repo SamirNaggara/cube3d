@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cube3d.h"
+#include "cube3d.h"
 
 int	ft_read_data(t_data *data, int fd)
 {

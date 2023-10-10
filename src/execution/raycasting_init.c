@@ -1,4 +1,4 @@
-#include "../../cube3d.h"
+#include "cube3d.h"
 
 void	ft_init_dir(t_data *data)
 {
@@ -14,7 +14,7 @@ void	ft_init_dir(t_data *data)
 		data->y_plane = 0.66;
 	else
 		data->x_plane = 0.66;
-	if (data->x_dir > 0|| data->y_dir > 0)
+	if (data->x_dir > 0 || data->y_dir > 0)
 	{
 		data->x_plane *= -1;
 		data->y_plane *= -1;
@@ -63,7 +63,7 @@ void	ft_init_values(t_data *data, t_values *v, int x)
 		v->delta_dist_x = ft_abs(1 / v->x_ray);
 	v->delta_dist_y = 1e30;
 	if (v->y_ray != 0)
-		v->delta_dist_y = ft_abs(1 / v->y_ray);;
+		v->delta_dist_y = ft_abs(1 / v->y_ray);
 	ft_init_step(data, v);
 	v->hit = 0;
 }

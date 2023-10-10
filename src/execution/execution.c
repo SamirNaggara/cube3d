@@ -10,23 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cube3d.h"
-
+#include "cube3d.h"
 
 int	ft_loop(t_data *data)
 {
-	if ((data->key.w || data->key.forward) && !(data->key.s || data->key.back))
+	if ((data->key.w || data->key.forward)
+		&& !(data->key.s || data->key.back))
 		ft_move(data, data->x_dir, data->y_dir, 1);
-	else if ((data->key.s || data->key.back) && !(data->key.w || data->key.forward))
+	else if ((data->key.s || data->key.back)
+		&& !(data->key.w || data->key.forward))
 		ft_move(data, data->x_dir, data->y_dir, -1);
 	if (data->key.a && !data->key.d)
 		ft_move(data, data->x_plane, data->y_plane, -1);
 	else if (data->key.d && !data->key.a)
 		ft_move(data, data->x_plane, data->y_plane, 1);
 	if (data->key.right && !data->key.left)
-		ft_rotate(data, 1);
+		ft_rotate(data, ROT, 1);
 	else if (data->key.left && !data->key.right)
-		ft_rotate(data, -1);
+		ft_rotate(data, ROT, -1);
 	ft_raycasting(data);
 	return (0);
 }
@@ -44,18 +45,10 @@ int	ft_init_mlx(t_data *data)
 	return (0);
 }
 
-static void	tmp_init(t_data *data)
-{
-	data->x_player = 5.5;
-	data->y_player = 8.5;
-	data->dir = 'N';
-}
-
 int	ft_exec(t_data *data)
 {
 	if (ft_init_mlx(data))
 		return (data->exit_code = 1, 1);
-	tmp_init(data);
 	ft_init_dir(data);
 	ft_raycasting(data);
 	mlx_hook(data->window, 2, 1L << 0, ft_key_press, data);

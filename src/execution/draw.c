@@ -1,4 +1,4 @@
-#include "../../cube3d.h"
+#include "cube3d.h"
 
 void	ft_pixel_put(t_img *img, int x, int y, int color)
 {
@@ -11,17 +11,34 @@ void	ft_pixel_put(t_img *img, int x, int y, int color)
 	}
 }
 
-int	ft_draw_vertical_line(t_img *img, int x, int start, int end, int color)
+int	ft_draw_vertical_line(t_data *data, int x, int start, int end)
 {
 	int	y;
+	int	color;
 
+	if (start == 0)
+		color = data->c_color;
+	else
+		color = data->f_color;
 	y = start;
 	while (y < end)
 	{
-		ft_pixel_put(img, x, y, color);
+		ft_pixel_put(&data->screen, x, y, color);
 		y++;
 	}
 	return (y);
+}
+
+t_img	*ft_find_tex(t_data *data, t_values *v)
+{	
+	if (v->side == 1 && v->y_ray <= 0)
+		return (&data->s_wall);
+	else if (v->side == 1 && v->y_ray > 0)
+		return (&data->n_wall);
+	else if (v->side == 0 && v->x_ray <= 0)
+		return (&data->e_wall);
+	else
+		return (&data->w_wall);
 }
 
 void	ft_draw_texture(t_data *data, t_values *v, int x)
@@ -31,15 +48,7 @@ void	ft_draw_texture(t_data *data, t_values *v, int x)
 	int		y;
 	int		color;
 
-	tex = NULL;
-	if (v->side == 1 && v->y_ray <= 0)
-		tex = &data->s_wall;
-	else if (v->side == 1 && v->y_ray > 0)
-		tex = &data->n_wall;
-	else if (v->side == 0 && v->x_ray <= 0)
-		tex = &data->e_wall;
-	else if (v->side == 0 && v->x_ray > 0)
-		tex = &data->w_wall;
+	tex = ft_find_tex(data, v);
 	if (v->side == 1)
 		wall_x = data->x_player + v->wall_dist * v->x_ray;
 	else
@@ -48,8 +57,9 @@ void	ft_draw_texture(t_data *data, t_values *v, int x)
 	y = 0;
 	while (y + v->start < v->end)
 	{
-		color = *(unsigned int *)(tex->address + ((y * tex->height / v->height) \
-		* tex->size_line + (int)(wall_x * (double)tex->width) * (tex->bpp / 8)));
+		color = *(unsigned int *)(tex->address \
+		+ ((y * tex->height / v->height) * tex->size_line \
+		+ (int)(wall_x * (double)tex->width) *(tex->bpp / 8)));
 		ft_pixel_put(&data->screen, x, y + v->start, color);
 		y++;
 	}
@@ -65,7 +75,7 @@ void	ft_draw(t_data *data, t_values *v, int x)
 	v->height = WIN_Y / v->wall_dist;
 	v->start = (WIN_Y / 2) - (v->height / 2) - diff;
 	v->end = (WIN_Y / 2) + (v->height / 2) - diff;
-	ft_draw_vertical_line(&data->screen, x, 0, v->start, data->c_color);
+	ft_draw_vertical_line(data, x, 0, v->start);
 	ft_draw_texture(data, v, x);
-	ft_draw_vertical_line(&data->screen, x, v->end, WIN_Y, data->f_color);
+	ft_draw_vertical_line(data, x, v->end, WIN_Y);
 }
