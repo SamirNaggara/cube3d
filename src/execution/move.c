@@ -19,9 +19,9 @@ void	ft_move(t_data *data, double x_dir, double y_dir, int side)
 	double	speed;
 
 	speed = MOVE;
-	if (data->key.shift && !data->key.ctrl)
+	if ((data->key.shift || data->key.space) && !data->key.ctrl)
 		speed *= 2;
-	else if (data->key.ctrl && !data->key.shift)
+	else if (data->key.ctrl && !(data->key.shift || data->key.space))
 		speed *= 0.4;
 	if (data->map[(int)data->y_player][(int)(data->x_player + (x_dir * speed * side))] != '1')
 		data->x_player += x_dir * speed * side;

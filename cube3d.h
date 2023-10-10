@@ -28,6 +28,7 @@
 # define BACK 65364
 # define SHIFT 65505
 # define CTRL 65507
+# define SPACE 32
 
 # define DIR "NSWE"
 # define AUTH_CHAR "NSWE01 "
@@ -75,6 +76,7 @@ typedef struct s_key
 	int	back;
 	int	shift;
 	int	ctrl;
+	int	space;
 }	t_key;
 
 typedef struct	s_img
