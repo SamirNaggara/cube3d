@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:12:18 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 16:12:20 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:06:33 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	ft_fill_map_array(t_data *data)
 int	ft_fill_map_line(t_data *data, int i, t_point **point)
 {
 	int	j;
-	
-	data->map[i] = (char *)malloc(sizeof(char) * (data->ll  + 1));
+
+	data->map[i] = (char *)malloc(sizeof(char) * (data->ll + 1));
 	if (!data->map[i])
 		return (0);
 	ft_memset(data->map[i], ' ', data->ll);

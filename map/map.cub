@@ -1,9 +1,25 @@
+Instructions :
+Le fichier suivant doit contenir :
+    - Un lien vers les 4 images de murs selon leurs direction, dans le format
+        "DIR PATH"
+    - Les couleurs choisies pour le sol (F) et le plafond (C) en RGB, dans le format
+        "F color,color,color" ou "C color, color, color" compris entre 0 et 255 
+    - La carte avec 
+        - Les caracteres autorises (0,1,N,S,W,E)
+        - Fermes par des murs
+        - Avec un seul joueur
+        - Forcement a la fin du fichier
+        - Pas d'un retour a la ligne a la fin de la map
+
+/*----------------------PARSING--------------------*/
+
 NO ./assets/north.xpm
 SO ./assets/south.xpm
 WE ./assets/east.xpm
 EA ./assets/west.xpm
 
 F 220,100,0
+
 C 225,30,0
 
 11111111111
