@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:11:51 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/10 14:09:36 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:03:33 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	ft_get_color_from_rgb(char *line)
 		return (-1);
 	line++;
 	rgb.blue = ft_extract_number(line);
-	ft_printf("Les 3 %d %d %d\n", rgb.red, rgb.green, rgb.blue);
 	if (rgb.blue == -1 || rgb.green == -1 || rgb.red == -1)
 		return (-1);
 	return (ft_create_rgb(rgb.red, rgb.green, rgb.blue));

@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:34:58 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/10 14:08:33 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:59:42 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ int		ft_authorize_char(t_data *data);
 int		ft_map_open(t_data *data);
 int		ft_tile_available(t_point *point);
 int		ft_verify_cub(char *name);
-
+void	ft_fill_player_data(t_data *data, t_point *point);
 /* EXECUTION */
 int		ft_exec(t_data *data);
 int		ft_init_mlx(t_data *data);
