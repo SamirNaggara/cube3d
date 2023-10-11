@@ -60,7 +60,7 @@ lib	:
 	@echo "Je sors du Makefile de Libft-plus"
 	@echo "Je déclenche le Makefile de minilibx\n"
 	@$(MAKE) --no-print-directory -C src/minilibx all
-	@echo "Je sors du Makefile de minilibx-plus"
+	@echo "\nJe sors du Makefile de minilibx\n"
 
 
 clean	:
@@ -77,7 +77,7 @@ fclean	:	clean
 	@echo "Je sors de la librairie libft-plus"
 	@echo "Je rentre dans la librairie minilibx"
 	@$(MAKE) --no-print-directory -C src/minilibx clean
-	@echo "Je sors de la librairie libft-plus"
+	@echo "Je sors de la librairie minilibx"
 	@echo "\n$(GREEN)Tout les fichiers ont bien été effacés$(RESET)\n"
 	@echo "Suppression de tout les fichiers ajoutés par l'utilisateur\n"
 

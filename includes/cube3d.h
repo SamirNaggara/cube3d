@@ -50,6 +50,9 @@ and permissions\n"
 # define E_EXT "Error\nThe map should be a .cub file\n"
 # define E_MISS_DATA "Error\nSome data are not available in the correct \
 format in input file\n"
+# define E_MLX "Error\nminilibx: failed to initialize\n"
+# define E_WINDOW "Error\nminilibx: failed to open window\n"
+# define E_MLX_IMG "Error\nminilibx: failed to open an image\n"
 
 # define ROT 0.014
 # define MOVE 0.04
