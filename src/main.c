@@ -21,11 +21,12 @@ int	main(int ac, char **av)
 	data.av = av;
 	data.mlx = mlx_init();
 	if (!data.mlx)
-		return (1);
+		return (printf(E_MLX), 1);
 	if (!ft_parsing(&data))
 		return (ft_exit_program(&data), 1);
 	if (!ft_load_images(&data))
 		return (ft_printf(E_IMG), 1);  //free a ajouter
 	ft_exec(&data);
+	printf("Unexpected error\n");
 	return (ft_exit_program(&data), 1);
 }

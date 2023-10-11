@@ -36,10 +36,10 @@ int	ft_init_mlx(t_data *data)
 {
 	data->window = mlx_new_window(data->mlx, WIN_X, WIN_Y, W_TITLE);
 	if (!data->window)
-		return (1);
+		return (printf(E_WINDOW), 1);
 	data->screen.img_ptr = mlx_new_image(data->mlx, WIN_X, WIN_Y);
 	if (!data->screen.img_ptr)
-		return (1);
+		return (printf(E_MLX_IMG), 1);
 	data->screen.address = mlx_get_data_addr(data->screen.img_ptr, \
 	&data->screen.bpp, &data->screen.size_line, &data->screen.endian);
 	return (0);
