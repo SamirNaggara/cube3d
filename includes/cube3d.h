@@ -6,12 +6,12 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:34:58 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/10 16:59:42 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:40:35 by mbenicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUBE3D_H
+# define CUBE3D_H
 
 # define WIN_X 1920
 # define WIN_Y 1080
@@ -84,7 +84,7 @@ typedef struct s_key
 	int	space;
 }	t_key;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	char	*address;
 	void	*img_ptr;
@@ -108,46 +108,46 @@ typedef struct s_point {
 	int				tmp;
 }	t_point;
 
-typedef struct	s_values
+typedef struct s_values
 {
-	double	x_ray;			//ray coordinates
+	double	x_ray;
 	double	y_ray;
-	double	delta_dist_x;	//distance between to x walls
+	double	delta_dist_x;
 	double	delta_dist_y;
-	double	side_dist_x;	//distance between player and next x wall
+	double	side_dist_x;
 	double	side_dist_y;
-	double	wall_dist;		//distance traveled by the ray until it hits a wall
-	int		map_x;			//coordinates of the tile the player is in
+	double	wall_dist;
+	int		map_x;
 	int		map_y;
 	int		step_x;
 	int		step_y;
-	int		hit;			//set to 1 when the ray hits a wall
-	int		side;			//to determine which side of the wall was hit
+	int		hit;
+	int		side;
 	int		height;
 	int		start;
 	int		end;
 }	t_values;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void		*mlx;
 	void		*window;
-    char		**map;
+	char		**map;
 	t_key		key;
-    double		x_player;
-    double		y_player;
+	double		x_player;
+	double		y_player;
 	double		x_dir;
 	double		y_dir;
 	double		x_plane;
 	double		y_plane;
-    char		dir;
+	char		dir;
 	t_img		screen;
-    t_img		n_wall;
-    t_img		w_wall;
-    t_img		e_wall;
-    t_img		s_wall;
-    int			c_color;
-    int			f_color;
+	t_img		n_wall;
+	t_img		w_wall;
+	t_img		e_wall;
+	t_img		s_wall;
+	int			c_color;
+	int			f_color;
 	int			ac;
 	char		**av;
 	int			exit_code;
@@ -155,15 +155,14 @@ typedef struct	s_data
 	t_point		*map_end;
 	int			nb_l;
 	int			ll;
-}    t_data;
+}	t_data;
 
-typedef struct	s_rgb
+typedef struct s_rgb
 {
 	int	red;
 	int	green;
 	int	blue;
 }	t_rgb;
-
 
 /* PARSING */
 int		ft_parsing(t_data *data);
