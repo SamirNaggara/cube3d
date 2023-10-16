@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:35:04 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/09 22:04:33 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:30:33 by mbenicho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	data = (t_data){0}; //init toute la structure a 0
+	data = (t_data){0};
 	data.ac = ac;
 	data.av = av;
 	data.mlx = mlx_init();
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 	if (!ft_parsing(&data))
 		return (ft_exit_program(&data), 1);
 	if (!ft_load_images(&data))
-		return (ft_printf(E_IMG), 1);  //free a ajouter
+		return (ft_printf(E_IMG), 1);
 	ft_exec(&data);
 	printf("Unexpected error\n");
 	return (ft_exit_program(&data), 1);
