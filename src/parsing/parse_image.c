@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:12:01 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/10 14:00:39 by snaggara         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:15:05 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_read_data(t_data *data, int fd)
 
 	line = get_next_line(fd);
 	if (!line)
-		return (close(fd), 0);
+		return (ft_printf(E_EMPTY_FILE), close(fd), 0);
 	while (line)
 	{
 		if (!ft_insert_wall_path(data, line))

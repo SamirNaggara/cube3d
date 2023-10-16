@@ -6,7 +6,7 @@
 /*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:34:58 by snaggara          #+#    #+#             */
-/*   Updated: 2023/10/16 15:40:35 by mbenicho         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:15:46 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ format in input file\n"
 # define E_MLX "Error\nminilibx: failed to initialize\n"
 # define E_WINDOW "Error\nminilibx: failed to open window\n"
 # define E_MLX_IMG "Error\nminilibx: failed to open an image\n"
-
+# define E_EMPTY_FILE "Error\nempty file\n"
 # define ROT 0.014
 # define MOVE 0.04
 # define COLLISION 0.3
