@@ -13,10 +13,10 @@ Le fichier suivant doit contenir :
 
 /*----------------------PARSING--------------------*/
 
-NO ./map/assets/north.xpm
+NO ./map/assets/south.xpm
 SO ./map/assets/south.xpm
-WE ./map/assets/east.xpm
-EA ./map/assets/west.xpm
+WE ./map/assets/south.xpm
+EA ./map/assets/south.xpm
 
 F 220,100,0
 
