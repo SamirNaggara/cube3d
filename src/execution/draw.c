@@ -54,6 +54,8 @@ void	ft_draw_texture(t_data *data, t_values *v, int x)
 	else
 		wall_x = data->y_player + v->wall_dist * v->y_ray;
 	wall_x -= (int)wall_x;
+	if ((v->side == 1 && v->y_ray > 0) || (v->side == 0 && v->x_ray <= 0))
+		wall_x = 1 - wall_x;
 	y = 0;
 	while (y + v->start < v->end)
 	{
