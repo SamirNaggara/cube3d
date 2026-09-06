@@ -1,6 +1,6 @@
 # cube3d
 
-Un moteur de rendu 3D par raycasting, dans l'esprit de Wolfenstein 3D, écrit en C avec la MiniLibX. Projet du tronc commun de 42 Paris, réalisé à deux.
+Un moteur de rendu 3D par raycasting, dans l'esprit de Wolfenstein 3D, écrit en C avec la MiniLibX. Projet du tronc commun de 42 Paris, réalisé avec [@manbex](https://github.com/manbex).
 
 ## Ce qui est implémenté
 
